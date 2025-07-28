@@ -40,7 +40,7 @@ public class AuthController {
     )
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody LoginDTO loginDTO) {
-        // 1. Authenticate
+
         Authentication authentication = authManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginDTO.getEmail(),
@@ -48,11 +48,11 @@ public class AuthController {
                 )
         );
 
-        // 2. Generate token
+
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String token = jwtUtil.generateToken(userDetails);
 
-        // 3. Return response
+
         return ResponseEntity.ok()
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
                 .body(Map.of(

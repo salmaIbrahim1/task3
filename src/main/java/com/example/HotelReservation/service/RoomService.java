@@ -7,10 +7,10 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface RoomService {
-    List<Room> getAllRooms();  // Added this method to match controller
+    List<Room> getAllRooms();
     List<Room> getRoomsByType(String roomType);
     Page<Room> getAllRooms(String roomType, String status, Pageable pageable);
     Room addRoom(RoomDTO roomDTO);
     Room updateRoomStatus(Long id, String status);
-    void deleteRoom(Long roomId);  // Added this method to match controller
+    void deleteRoom(Long roomId);
 }
